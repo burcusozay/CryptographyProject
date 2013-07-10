@@ -111,7 +111,7 @@ namespace RSAProjesi
         public string OpenFile()
         {
             string FilePath = "";
-            openFileDialog1.Title = "Lütfen Dosya Seçiniz";
+            openFileDialog1.Title = "Please select a text file";
             // openFileDialog1.Filter = "Text files(*.txt)|*.txt";
             openFileDialog1.Filter = " (*.txt)|*.txt";//|(*.docx)|*.docx|(*.doc)|*.doc";
             openFileDialog1.FilterIndex = 1;
@@ -145,7 +145,7 @@ namespace RSAProjesi
                     FileYKCipherText.Close();
                 }
                 else
-                    MessageBox.Show("Lütfen bir dosya seçiniz!");
+                    MessageBox.Show("Please select a text file!");
 
             }
             
@@ -244,13 +244,20 @@ namespace RSAProjesi
             return sifreliKarakter;
         }
         private void button1_Click(object sender, EventArgs e)
-        {
+        { 
             try
             {
-                richTextBox2.Text = "";
-                TextYaz(richTextBox1, richTextBox2, listBox1, listBox2);
-                sifreliDizi = KarakterSifreleme(richTextBox1.Text, b, n, phi);//şifrelenmiş karakterler atanır.
-                richTextBox2.Text = sifreliDizi.ToString();
+                if (textBox_RSA_PublicKey.Text != "")
+                {
+                    richTextBox2.Text = "";
+                    TextYaz(richTextBox1, richTextBox2, listBox1, listBox2);
+                    sifreliDizi = KarakterSifreleme(richTextBox1.Text, b, n, phi);//şifrelenmiş karakterler atanır.
+                    richTextBox2.Text = sifreliDizi.ToString();
+                }
+                else
+                {
+                    throw new NullReferenceException();
+                }
             }
             catch (NullReferenceException NRE)
             {
