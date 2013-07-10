@@ -339,7 +339,25 @@ namespace RSAProjesi
         private void button2_Click(object sender, EventArgs e)
         {
            //richTextBox1.Text = "Encrypted Text is: "+SifreCoz(sifreliDizi);
-           MessageBox.Show("Encrypted Text: " +SifreCoz(sifreliDizi));
+	     try
+            {
+                if (richTextBox1.Text == "")
+                {
+                    throw new NullReferenceException();
+                }
+                else
+                {
+                    MessageBox.Show("Encrypted Text: " + SifreCoz(sifreliDizi));
+                }
+            }
+            catch (NullReferenceException ex) 
+            {
+                MessageBox.Show("Please enter a plaintext first");
+            }
+            finally 
+            {
+            	
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
