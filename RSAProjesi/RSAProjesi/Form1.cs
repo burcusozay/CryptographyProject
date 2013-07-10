@@ -341,7 +341,7 @@ namespace RSAProjesi
            //richTextBox1.Text = "Encrypted Text is: "+SifreCoz(sifreliDizi);
 	     try
             {
-                if (richTextBox1.Text == "")
+                if (richTextBox2.Text == "")
                 {
                     throw new NullReferenceException();
                 }
@@ -352,7 +352,7 @@ namespace RSAProjesi
             }
             catch (NullReferenceException ex) 
             {
-                MessageBox.Show("Please enter a plaintext first");
+                MessageBox.Show("Please enter a plaintext first and press encrypt button");
             }
             finally 
             {
